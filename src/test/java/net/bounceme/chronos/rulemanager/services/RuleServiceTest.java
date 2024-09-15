@@ -4,6 +4,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import net.bounceme.chronos.app.usuarios.commons.dto.RuleDTO;
+import net.bounceme.chronos.app.usuarios.commons.model.Role;
 import net.bounceme.chronos.app.usuarios.commons.model.Rule;
 import net.bounceme.chronos.rulemanager.repository.RuleRepository;
 import net.bounceme.chronos.rulemanager.service.impl.RuleServiceImpl;
@@ -137,7 +139,32 @@ class RuleServiceTest {
     void deleteRule_RemovesRule_WhenRuleExists() {
         Long id = 1L;
         Rule rule = new Rule();
-        when(ruleRepository.findById(id)).thenReturn(Optional.of(rule));
+        
+        Role role = new Role();
+        List<Role> roles = new ArrayList<>();
+        roles.add(role);
+        rule.setRoles(roles);
+        
+        Optional<Rule> oRule = Optional.of(rule);
+        
+        when(ruleRepository.findById(id)).thenReturn(oRule);
+
+        ruleServiceImpl.deleteRule(id);
+
+        verify(ruleRepository, times(1)).deleteById(id);
+    }
+    
+    @Test
+    void deleteRule_RemovesRule_WhenRuleExistsAndRolesIsEmpty() {
+        Long id = 1L;
+        Rule rule = new Rule();
+        
+        List<Role> roles = new ArrayList<>();
+        rule.setRoles(roles);
+        
+        Optional<Rule> oRule = Optional.of(rule);
+        
+        when(ruleRepository.findById(id)).thenReturn(oRule);
 
         ruleServiceImpl.deleteRule(id);
 
