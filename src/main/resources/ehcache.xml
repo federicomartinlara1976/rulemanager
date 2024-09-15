@@ -1,0 +1,46 @@
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+	<persistence directory="${java.io.tmpdir}/ehcache/" />
+
+    <cache alias="accesses">
+        <expiry>
+            <ttl unit="days">7</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">100</heap>
+            <disk unit="MB" persistent="true">10</disk>
+        </resources>
+    </cache>
+    
+    <cache alias="methods">
+        <expiry>
+            <ttl unit="days">7</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">100</heap>
+            <disk unit="MB" persistent="true">10</disk>
+        </resources>
+    </cache>
+    
+    <cache alias="roles">
+        <expiry>
+            <ttl unit="days">7</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">100</heap>
+            <disk unit="MB" persistent="true">10</disk>
+        </resources>
+    </cache>
+    
+    <cache alias="rules">
+        <expiry>
+            <ttl unit="hours">1</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">100</heap>
+            <disk unit="MB" persistent="true">10</disk>
+        </resources>
+    </cache>
+</config>
