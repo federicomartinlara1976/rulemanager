@@ -84,7 +84,6 @@ public class RuleServiceImpl implements RuleService {
 			Rule rule = oRule.get();
 			List<Role> roles = rule.getRoles();
 			
-			// TODO - Esta parte no tiene cobertura (no tiene prueba)
 			if (CollectionUtils.isNotEmpty(roles)) {
 				roles.clear();
 			}

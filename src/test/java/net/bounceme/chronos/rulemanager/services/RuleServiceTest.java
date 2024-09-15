@@ -141,6 +141,10 @@ class RuleServiceTest {
         Rule rule = new Rule();
         
         Role role = new Role();
+        
+        /*
+         * No usar List.of(), ya que da lugar a colecciones inmutables que no se pueden borrar
+         */
         List<Role> roles = new ArrayList<>();
         roles.add(role);
         rule.setRoles(roles);
