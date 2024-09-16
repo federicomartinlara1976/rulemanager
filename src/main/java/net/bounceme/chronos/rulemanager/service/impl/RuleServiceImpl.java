@@ -94,8 +94,6 @@ public class RuleServiceImpl implements RuleService {
 			 */
 			ruleRepository.deleteById(id);
 		}
-		
-		// ruleRepository.deleteById(id);
 	}
 
 	@Override
