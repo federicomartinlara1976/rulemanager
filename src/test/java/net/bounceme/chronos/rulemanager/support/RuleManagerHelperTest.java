@@ -1,16 +1,14 @@
 package net.bounceme.chronos.rulemanager.support;
 
-import org.infinispan.commons.dataconversion.MediaType;
-import org.infinispan.commons.io.ByteBuffer;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cache.interceptor.SimpleKey;
-
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import net.bounceme.chronos.rulemanager.exception.IncorrectRuleException;
 
 @SpringBootTest
 class RuleManagerHelperTest {
@@ -40,5 +38,15 @@ class RuleManagerHelperTest {
     @Test
     void asDate_ThrowsException_WhenLocalDateTimeIsNull() {
         Assertions.assertThrows(NullPointerException.class, () -> RuleManagerHelper.asDate(null));
+    }
+
+    @Test
+    void failWhenTrue_ThrowsException_WhenConditionIsTrue() {
+        Assertions.assertThrows(IncorrectRuleException.class, () -> RuleManagerHelper.failWhenTrue(true, "Error message"));
+    }
+
+    @Test
+    void failWhenTrue_DoesNotThrowException_WhenConditionIsFalse() {
+        Assertions.assertDoesNotThrow(() -> RuleManagerHelper.failWhenTrue(false, "Error message"));
     }
 }

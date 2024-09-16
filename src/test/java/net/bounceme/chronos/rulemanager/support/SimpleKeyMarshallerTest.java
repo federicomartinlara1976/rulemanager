@@ -71,4 +71,33 @@ class SimpleKeyMarshallerTest {
         Assertions.assertNotNull(result);
         Assertions.assertTrue(result.getBuf().length > 0);
     }
+    
+    @Test
+    void isMarshallable_ReturnsTrue_WhenSimpleKeyArrayProvided() throws Exception {
+        SimpleKeyMarshaller marshaller = new SimpleKeyMarshaller();
+        SimpleKey[] keys = { new SimpleKey("test1"), new SimpleKey("test2") };
+
+        boolean result = marshaller.isMarshallable(keys);
+
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void isMarshallable_ReturnsFalse_WhenNonSimpleKeyArrayProvided() throws Exception {
+        SimpleKeyMarshaller marshaller = new SimpleKeyMarshaller();
+        String[] nonSimpleKeys = { "test1", "test2" };
+
+        boolean result = marshaller.isMarshallable(nonSimpleKeys);
+
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void isMarshallable_ReturnsFalse_WhenNullProvided() throws Exception {
+        SimpleKeyMarshaller marshaller = new SimpleKeyMarshaller();
+
+        boolean result = marshaller.isMarshallable(null);
+
+        Assertions.assertFalse(result);
+    }
 }

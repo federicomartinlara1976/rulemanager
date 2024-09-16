@@ -25,6 +25,7 @@ import net.bounceme.chronos.rulemanager.repository.AccessRepository;
 import net.bounceme.chronos.rulemanager.repository.MethodRepository;
 import net.bounceme.chronos.rulemanager.repository.RoleRepository;
 import net.bounceme.chronos.rulemanager.repository.RuleRepository;
+import net.bounceme.chronos.rulemanager.support.RuleManagerHelper;
 
 @Component
 @Slf4j
@@ -129,26 +130,16 @@ public class UpdateRules {
 		List<Access> accesses = accessRepository.findAll();
 		Optional<Access> fAccess = accesses.stream().filter(access -> access.getName().equals(nameAccess)).findFirst();
 		
-		// TODO - Simplificar mediante el uso de aserciones
-		if (fAccess.isEmpty()) {
-			String sMessage = String.format("Acceso incorrecto (elegir entre %s)", accesses.toString());
-			log.error(sMessage);
-			throw new IncorrectRuleException(sMessage);
-		} else if ("ROLE".equals(nameAccess) && Objects.isNull(ruleDTO.getRole())) {
-			throw new IncorrectRuleException("El rol debe estar informado");
-		} else if ("ROLE".equals(nameAccess) && CollectionUtils.isNotEmpty(ruleDTO.getRoles())) {
-			throw new IncorrectRuleException("La lista de roles no debe ser informada");
-		} else if ("ROLES".equals(nameAccess) && CollectionUtils.isEmpty(ruleDTO.getRoles())) {
-			throw new IncorrectRuleException("La lista de roles debe ser informada");
-		} else if ("ROLES".equals(nameAccess) && !Objects.isNull(ruleDTO.getRole())) {
-			throw new IncorrectRuleException("El rol no debe estar informado");
-		} else if ("ALL".equals(nameAccess) && (!Objects.isNull(ruleDTO.getRole())
-				|| CollectionUtils.isNotEmpty(ruleDTO.getRoles()))) {
-			throw new IncorrectRuleException("Para acceso ALL no deben estar informados los roles");
-		} else if ("AUTHENTICATED".equals(nameAccess) && (!Objects.isNull(ruleDTO.getRole())
-				|| CollectionUtils.isNotEmpty(ruleDTO.getRoles()))) {
-			throw new IncorrectRuleException("Para acceso AUTHENTICATED no deben estar informados los roles");
-		}
+		String sMessage = String.format("Acceso incorrecto (elegir entre %s)", accesses.toString());
+		RuleManagerHelper.failWhenTrue(fAccess.isEmpty(), sMessage);
+		RuleManagerHelper.failWhenTrue("ROLE".equals(nameAccess) && Objects.isNull(ruleDTO.getRole()), "El rol debe estar informado");
+		RuleManagerHelper.failWhenTrue("ROLE".equals(nameAccess) && CollectionUtils.isNotEmpty(ruleDTO.getRoles()), "La lista de roles no debe ser informada");
+		RuleManagerHelper.failWhenTrue("ROLES".equals(nameAccess) && CollectionUtils.isEmpty(ruleDTO.getRoles()), "La lista de roles debe ser informada");
+		RuleManagerHelper.failWhenTrue("ROLES".equals(nameAccess) && !Objects.isNull(ruleDTO.getRole()), "El rol no debe estar informado");
+		RuleManagerHelper.failWhenTrue("ALL".equals(nameAccess) && (!Objects.isNull(ruleDTO.getRole())
+				|| CollectionUtils.isNotEmpty(ruleDTO.getRoles())), "Para acceso ALL no deben estar informados los roles");
+		RuleManagerHelper.failWhenTrue("AUTHENTICATED".equals(nameAccess) && (!Objects.isNull(ruleDTO.getRole())
+				|| CollectionUtils.isNotEmpty(ruleDTO.getRoles())), "Para acceso AUTHENTICATED no deben estar informados los roles");
 	}
 
 	private void updateRoles(Rule rule, RuleDTO newDataDTO) {
