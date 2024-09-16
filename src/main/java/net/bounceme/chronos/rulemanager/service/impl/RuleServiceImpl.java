@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.modelmapper.ModelMapper;
@@ -37,7 +36,7 @@ public class RuleServiceImpl implements RuleService {
 		
 		List<Rule> rules = ruleRepository.findAll();
 		return CollectionUtils.isNotEmpty(rules) ? rules.stream()
-				.map(rule -> modelMapper.map(rule, RuleDTO.class)).collect(Collectors.toList())
+				.map(rule -> modelMapper.map(rule, RuleDTO.class)).toList()
 				: Collections.emptyList();
 	}
 
@@ -49,7 +48,7 @@ public class RuleServiceImpl implements RuleService {
 		
 		List<Rule> rules = ruleRepository.getByMethod(method);
 		return CollectionUtils.isNotEmpty(rules) ? rules.stream()
-				.map(rule -> modelMapper.map(rule, RuleDTO.class)).collect(Collectors.toList())
+				.map(rule -> modelMapper.map(rule, RuleDTO.class)).toList()
 				: Collections.emptyList();
 	}
 
@@ -61,7 +60,7 @@ public class RuleServiceImpl implements RuleService {
 		
 		List<Rule> rules = ruleRepository.getByAccess(access);
 		return CollectionUtils.isNotEmpty(rules) ? rules.stream()
-				.map(rule -> modelMapper.map(rule, RuleDTO.class)).collect(Collectors.toList())
+				.map(rule -> modelMapper.map(rule, RuleDTO.class)).toList()
 				: Collections.emptyList();
 	}
 
@@ -102,7 +101,7 @@ public class RuleServiceImpl implements RuleService {
 	public List<RuleDTO> listByDate(Date from, Date to) {
 		List<Rule> rules = ruleRepository.getByCreationDate(from, to);
 		return CollectionUtils.isNotEmpty(rules) ? rules.stream()
-				.map(rule -> modelMapper.map(rule, RuleDTO.class)).collect(Collectors.toList())
+				.map(rule -> modelMapper.map(rule, RuleDTO.class)).toList()
 				: Collections.emptyList();
 	}
 
