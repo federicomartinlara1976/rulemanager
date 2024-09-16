@@ -129,6 +129,7 @@ public class UpdateRules {
 		List<Access> accesses = accessRepository.findAll();
 		Optional<Access> fAccess = accesses.stream().filter(access -> access.getName().equals(nameAccess)).findFirst();
 		
+		// TODO - Simplificar mediante el uso de aserciones
 		if (fAccess.isEmpty()) {
 			String sMessage = String.format("Acceso incorrecto (elegir entre %s)", accesses.toString());
 			log.error(sMessage);
