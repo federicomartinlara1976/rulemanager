@@ -2,7 +2,6 @@ package net.bounceme.chronos.rulemanager.service.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.modelmapper.ModelMapper;
@@ -35,7 +34,7 @@ public class AccessServiceImpl implements AccessService {
 		
 		List<Access> lstAccess = accessRepository.findAll();
 		return CollectionUtils.isNotEmpty(lstAccess) ? lstAccess.stream()
-				.map(access -> modelMapper.map(access, AccessDTO.class)).collect(Collectors.toList())
+				.map(access -> modelMapper.map(access, AccessDTO.class)).toList()
 				: Collections.emptyList();
 	}
 }

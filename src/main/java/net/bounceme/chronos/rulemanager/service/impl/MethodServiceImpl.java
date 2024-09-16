@@ -2,7 +2,6 @@ package net.bounceme.chronos.rulemanager.service.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.modelmapper.ModelMapper;
@@ -35,7 +34,7 @@ public class MethodServiceImpl implements MethodService {
 		
 		List<Method> lstMethods = methodRepository.findAll();
 		return CollectionUtils.isNotEmpty(lstMethods) ? lstMethods.stream()
-				.map(method -> modelMapper.map(method, MethodDTO.class)).collect(Collectors.toList())
+				.map(method -> modelMapper.map(method, MethodDTO.class)).toList()
 				: Collections.emptyList();
 	}
 }

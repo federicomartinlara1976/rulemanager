@@ -2,7 +2,6 @@ package net.bounceme.chronos.rulemanager.service.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.modelmapper.ModelMapper;
@@ -35,7 +34,7 @@ public class RoleServiceImpl implements RoleService {
 		
 		List<Role> roles = roleRepository.findAll();
 		return CollectionUtils.isNotEmpty(roles) ? roles.stream()
-				.map(role -> modelMapper.map(role, RoleDTO.class)).collect(Collectors.toList())
+				.map(role -> modelMapper.map(role, RoleDTO.class)).toList()
 				: Collections.emptyList();
 	}
 }
