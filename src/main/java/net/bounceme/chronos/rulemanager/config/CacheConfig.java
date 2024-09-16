@@ -32,15 +32,6 @@ public class CacheConfig {
 	@Value("${infinispan.remote.sasl-mechanism}")
 	private String authMechanism;
 
-//    @Bean
-//    @SneakyThrows
-//    public CacheManager cacheManager() {
-//        CachingProvider cachingProvider = Caching.getCachingProvider(EhcacheCachingProvider.class.getName());
-//        javax.cache.CacheManager cacheManager = cachingProvider.getCacheManager(
-//            getClass().getResource("/ehcache.xml").toURI(), getClass().getClassLoader());
-//        return new JCacheCacheManager(cacheManager);
-//    }
-
 	@Bean
 	public SpringRemoteCacheManager cacheManager() {
 		// Configurar el RemoteCacheManager con los detalles de conexión
