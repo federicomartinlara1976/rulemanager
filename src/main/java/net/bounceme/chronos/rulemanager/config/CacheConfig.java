@@ -36,18 +36,17 @@ public class CacheConfig {
 	public SpringRemoteCacheManager cacheManager() {
 		// Configurar el RemoteCacheManager con los detalles de conexión
 		ConfigurationBuilder builder = new ConfigurationBuilder();
-		builder.addServer().host(cacheServer) // Cambia esto por la IP o el hostname de tu servidor Infinispan
-				.port(cachePort); // Cambia esto por el puerto de tu servidor Infinispan
+		builder.addServer().host(cacheServer) 
+				.port(cachePort); 
 
-		builder.security().authentication().username(authUserName) // Usuario para autenticación
-				.password(authPassword) // Contraseña para autenticación
-				.realm(authRealm) // Cambia esto si es necesario
-				.saslMechanism(authMechanism); // Mecanismo SASL de autenticación
+		builder.security().authentication().username(authUserName) 
+				.password(authPassword) 
+				.realm(authRealm) 
+				.saslMechanism(authMechanism); 
 
 		// Configurar el marshaller para utilizar JSON
         builder.marshaller(new SimpleKeyMarshaller());
 		
-		// Crear y devolver el RemoteCacheManager
 		RemoteCacheManager remoteCacheManager = new RemoteCacheManager(builder.build());
 
 		return new SpringRemoteCacheManager(remoteCacheManager);
