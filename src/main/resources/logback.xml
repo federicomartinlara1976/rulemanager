@@ -36,14 +36,13 @@
         </encoder>
     </appender>
 
-    <logger name="net.bounceme.chronos.rulemanager" level="debug" additivity="false">
+    <logger name="net.bounceme.chronos.rulemanager" level="info" additivity="false">
     	<appender-ref ref="CONSOLE"/>
         <appender-ref ref="GELF"/>
     </logger>
 
-    <root level="debug">
+    <root level="info">
     	<appender-ref ref="CONSOLE"/>
-        <appender-ref ref="GELF"/>
     </root>
 
 </configuration>
