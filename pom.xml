@@ -13,7 +13,7 @@
 
 	<groupId>net.bounceme.chronos</groupId>
 	<artifactId>rulemanager</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>RuleManager</name>
 	<description>Microservicio gestor de reglas de gateway</description>
 
@@ -226,13 +226,19 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<spring.profiles.active>dev</spring.profiles.active>
+			</properties>
 			<build>
 				<finalName>${project.artifactId}-dev</finalName>
 			</build>
 		</profile>
 
 		<profile>
-			<id>pro</id>
+			<id>prod</id>
+			<properties>
+				<spring.profiles.active>prod</spring.profiles.active>
+			</properties>
 			<build>
 				<finalName>${project.artifactId}</finalName>
 			</build>

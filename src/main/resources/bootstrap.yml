@@ -1,9 +1,10 @@
 spring:
   application:
     name: rulemanager
+    version: 1.0.0
     
   profiles:
-    active: ${ENV}
+    active: ${spring.profiles.active}
   
   config.import: "optional:configserver:"
   cloud:
