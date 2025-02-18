@@ -10,12 +10,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class GenericConfiguration {
 	
 	@Bean
-	public ModelMapper modelMapper() {
+	ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
 	
 	@Bean
-	public ObjectMapper objectMapper() {
+	ObjectMapper objectMapper() {
 		return new ObjectMapper();
 	}
 }

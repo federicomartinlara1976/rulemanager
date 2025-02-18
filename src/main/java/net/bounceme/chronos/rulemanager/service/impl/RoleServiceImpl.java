@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +28,7 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Override
 	@Transactional(readOnly = true)
+	@Cacheable(value = "roles", key = "'allRoles'")
 	public List<RoleDTO> listAll() {
 		log.info("get roles");
 		

@@ -2,10 +2,13 @@ package net.bounceme.chronos.rulemanager.dto;
 
 import java.io.Serializable;
 
-import org.infinispan.protostream.annotations.ProtoField;
-import org.infinispan.protostream.annotations.ProtoName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@ProtoName("MethodDTO")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MethodDTO implements Serializable {
 
 	/**
@@ -16,32 +19,4 @@ public class MethodDTO implements Serializable {
 	private Long id;
 
 	private String name;
-
-	public MethodDTO() {
-		super();
-	}
-
-	public MethodDTO(Long id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
-
-	@ProtoField(number = 1, required = true)
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	@ProtoField(number = 2, required = true)
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }
