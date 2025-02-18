@@ -1,5 +1,6 @@
 package net.bounceme.chronos.rulemanager.service.impl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,8 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
-import net.bounceme.chronos.app.usuarios.commons.dto.MethodDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Method;
+import net.bounceme.chronos.rulemanager.dto.MethodDTO;
 import net.bounceme.chronos.rulemanager.repository.MethodRepository;
 import net.bounceme.chronos.rulemanager.service.MethodService;
 
@@ -28,13 +29,13 @@ public class MethodServiceImpl implements MethodService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	@Cacheable("methods")
+	@Cacheable(value = "methods", key = "'allMethods'")
 	public List<MethodDTO> listAll() {
 		log.info("get methods");
 		
 		List<Method> lstMethods = methodRepository.findAll();
-		return CollectionUtils.isNotEmpty(lstMethods) ? lstMethods.stream()
-				.map(method -> modelMapper.map(method, MethodDTO.class)).toList()
+		return CollectionUtils.isNotEmpty(lstMethods) ? new ArrayList<>(lstMethods.stream()
+				.map(method -> modelMapper.map(method, MethodDTO.class)).toList())
 				: Collections.emptyList();
 	}
 }

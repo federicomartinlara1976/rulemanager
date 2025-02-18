@@ -15,14 +15,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import net.bounceme.chronos.app.usuarios.commons.dto.AccessDTO;
-import net.bounceme.chronos.app.usuarios.commons.dto.MethodDTO;
-import net.bounceme.chronos.app.usuarios.commons.dto.RoleDTO;
-import net.bounceme.chronos.app.usuarios.commons.dto.RuleDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Access;
 import net.bounceme.chronos.app.usuarios.commons.model.Method;
 import net.bounceme.chronos.app.usuarios.commons.model.Role;
 import net.bounceme.chronos.app.usuarios.commons.model.Rule;
+import net.bounceme.chronos.rulemanager.dto.AccessDTO;
+import net.bounceme.chronos.rulemanager.dto.MethodDTO;
+import net.bounceme.chronos.rulemanager.dto.RoleDTO;
+import net.bounceme.chronos.rulemanager.dto.RuleDTO;
 import net.bounceme.chronos.rulemanager.exception.IncorrectRuleException;
 import net.bounceme.chronos.rulemanager.repository.AccessRepository;
 import net.bounceme.chronos.rulemanager.repository.MethodRepository;

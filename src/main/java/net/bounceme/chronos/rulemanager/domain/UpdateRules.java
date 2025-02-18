@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import net.bounceme.chronos.app.usuarios.commons.dto.RoleDTO;
-import net.bounceme.chronos.app.usuarios.commons.dto.RuleDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Access;
 import net.bounceme.chronos.app.usuarios.commons.model.Method;
 import net.bounceme.chronos.app.usuarios.commons.model.Role;
 import net.bounceme.chronos.app.usuarios.commons.model.Rule;
+import net.bounceme.chronos.rulemanager.dto.RoleDTO;
+import net.bounceme.chronos.rulemanager.dto.RuleDTO;
 import net.bounceme.chronos.rulemanager.exception.IncorrectRuleException;
 import net.bounceme.chronos.rulemanager.repository.AccessRepository;
 import net.bounceme.chronos.rulemanager.repository.MethodRepository;

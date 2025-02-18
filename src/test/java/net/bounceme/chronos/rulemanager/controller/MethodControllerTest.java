@@ -1,7 +1,12 @@
 package net.bounceme.chronos.rulemanager.controller;
 
-import net.bounceme.chronos.app.usuarios.commons.dto.MethodDTO;
-import net.bounceme.chronos.rulemanager.service.MethodService;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,12 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import net.bounceme.chronos.rulemanager.dto.MethodDTO;
+import net.bounceme.chronos.rulemanager.service.MethodService;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)

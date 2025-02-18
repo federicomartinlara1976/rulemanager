@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
-import net.bounceme.chronos.app.usuarios.commons.dto.RuleDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Role;
 import net.bounceme.chronos.app.usuarios.commons.model.Rule;
+import net.bounceme.chronos.rulemanager.dto.RuleDTO;
 import net.bounceme.chronos.rulemanager.repository.RuleRepository;
 import net.bounceme.chronos.rulemanager.service.RuleService;
 

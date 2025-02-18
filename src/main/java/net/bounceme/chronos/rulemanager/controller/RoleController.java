@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.bounceme.chronos.app.usuarios.commons.dto.RoleDTO;
+import net.bounceme.chronos.rulemanager.dto.RoleDTO;
 import net.bounceme.chronos.rulemanager.service.RoleService;
 
 @RestController

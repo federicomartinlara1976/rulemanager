@@ -1,10 +1,15 @@
 package net.bounceme.chronos.rulemanager.config;
 
+import java.io.IOException;
+
 import javax.annotation.PreDestroy;
 
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.client.hotrod.configuration.ConfigurationBuilder;
+import org.infinispan.client.hotrod.marshall.MarshallerUtil;
 import org.infinispan.commons.marshall.ProtoStreamMarshaller;
+import org.infinispan.protostream.FileDescriptorSource;
+import org.infinispan.protostream.SerializationContext;
 import org.infinispan.spring.remote.provider.SpringRemoteCacheManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
@@ -12,7 +17,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import lombok.extern.slf4j.Slf4j;
-import net.bounceme.chronos.rulemanager.support.SimpleKeyMarshaller;
+import net.bounceme.chronos.rulemanager.support.MethodDTOListMarshaller;
+import net.bounceme.chronos.rulemanager.support.MethodDTOMarshaller;
 
 @Configuration
 @EnableCaching
@@ -50,11 +56,23 @@ public class CacheConfig {
 		builder.addServer().host(cacheServer).port(cachePort).security().authentication().username(authUserName)
 				.password(authPassword).realm(authRealm).saslMechanism(authMechanism).socketTimeout(5000)
 				.connectionTimeout(5000);
-
-		// Usar un marshaller más robusto si es necesario
-		builder.marshaller(new ProtoStreamMarshaller());
 		
+		// Configurar el marshaller para utilizar ProtoStream
+        builder.marshaller(new ProtoStreamMarshaller());
+
 		remoteCacheManager = new RemoteCacheManager(builder.build());
+		
+		// Registrar el marshaller personalizado para SimpleKey
+        SerializationContext ctx = MarshallerUtil.getSerializationContext(remoteCacheManager);
+        
+        try {
+            ctx.registerProtoFiles(FileDescriptorSource.fromResources("dtos.proto"));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to register ProtoBuf schema", e);
+        }
+        
+        ctx.registerMarshaller(new MethodDTOMarshaller());
+        ctx.registerMarshaller(new MethodDTOListMarshaller());
 
 		return new SpringRemoteCacheManager(remoteCacheManager);
 	}
