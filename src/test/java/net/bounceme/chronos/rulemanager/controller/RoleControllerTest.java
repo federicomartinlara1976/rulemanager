@@ -16,7 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import net.bounceme.chronos.rulemanager.dto.RoleDTO;
+import net.bounceme.chronos.app.usuarios.commons.dto.RoleDTO;
 import net.bounceme.chronos.rulemanager.service.RoleService;
 
 @SpringBootTest

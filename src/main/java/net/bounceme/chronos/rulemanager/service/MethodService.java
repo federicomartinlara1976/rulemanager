@@ -2,7 +2,7 @@ package net.bounceme.chronos.rulemanager.service;
 
 import java.util.List;
 
-import net.bounceme.chronos.rulemanager.dto.MethodDTO;
+import net.bounceme.chronos.app.usuarios.commons.dto.MethodDTO;
 
 public interface MethodService {
 	

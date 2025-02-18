@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
+import net.bounceme.chronos.app.usuarios.commons.dto.AccessDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Access;
-import net.bounceme.chronos.rulemanager.dto.AccessDTO;
 import net.bounceme.chronos.rulemanager.repository.AccessRepository;
 import net.bounceme.chronos.rulemanager.service.AccessService;
 

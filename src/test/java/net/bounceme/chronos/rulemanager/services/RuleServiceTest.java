@@ -19,9 +19,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import net.bounceme.chronos.app.usuarios.commons.dto.RuleDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Role;
 import net.bounceme.chronos.app.usuarios.commons.model.Rule;
-import net.bounceme.chronos.rulemanager.dto.RuleDTO;
 import net.bounceme.chronos.rulemanager.repository.RuleRepository;
 import net.bounceme.chronos.rulemanager.service.impl.RuleServiceImpl;
 

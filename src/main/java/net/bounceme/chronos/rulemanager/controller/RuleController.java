@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
+import net.bounceme.chronos.app.usuarios.commons.dto.RuleDTO;
 import net.bounceme.chronos.rulemanager.domain.UpdateRules;
-import net.bounceme.chronos.rulemanager.dto.RuleDTO;
 import net.bounceme.chronos.rulemanager.service.RuleService;
 import net.bounceme.chronos.rulemanager.support.RuleManagerHelper;
 

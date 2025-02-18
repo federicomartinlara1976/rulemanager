@@ -17,8 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import net.bounceme.chronos.app.usuarios.commons.dto.RuleDTO;
 import net.bounceme.chronos.rulemanager.domain.UpdateRules;
-import net.bounceme.chronos.rulemanager.dto.RuleDTO;
 import net.bounceme.chronos.rulemanager.service.RuleService;
 
 @SpringBootTest
