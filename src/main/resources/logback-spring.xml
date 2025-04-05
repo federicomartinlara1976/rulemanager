@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+	<springProperty name="LOG_LEVEL" source="log.level" defaultValue="info"/>
+	<springProperty name="PROFILE_ACTIVE" source="spring.profiles.active" defaultValue="dev"/>
+	<springProperty name="GRAYLOG_SERVER" source="graylog.server" defaultValue="localhost"/>
+	<springProperty name="GRAYLOG_PORT" source="graylog.port" defaultValue="12201"/>
+
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
       		<charset>UTF-8</charset>
@@ -11,8 +16,8 @@
     </appender>
     
     <appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
-        <graylogHost>192.168.1.135</graylogHost>
-        <graylogPort>12201</graylogPort>
+        <graylogHost>${GRAYLOG_SERVER}</graylogHost>
+        <graylogPort>${GRAYLOG_PORT}</graylogPort>
         <maxChunkSize>508</maxChunkSize>
         <useCompression>true</useCompression>
         <messageIdSupplier class="de.siegmar.logbackgelf.MessageIdSupplier"/>
@@ -32,17 +37,18 @@
             </fullPatternLayout>
             <numbersAsString>false</numbersAsString>
             <staticField>application:rulemanager</staticField>
-            <staticField>environment:dev</staticField>
+            <staticField>environment:${PROFILE_ACTIVE}</staticField>
         </encoder>
     </appender>
 
-    <logger name="net.bounceme.chronos.rulemanager" level="info" additivity="false">
+    <logger name="net.bounceme.chronos.rulemanager" level="${LOG_LEVEL}" additivity="false">
     	<appender-ref ref="CONSOLE"/>
         <appender-ref ref="GELF"/>
     </logger>
 
-    <root level="info">
+    <root level="${LOG_LEVEL}">
     	<appender-ref ref="CONSOLE"/>
+    	<appender-ref ref="GELF"/>
     </root>
 
 </configuration>

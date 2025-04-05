@@ -1,7 +1,7 @@
 spring:
   application:
     name: rulemanager
-    version: 1.0.0
+    version: @project.version@
     
   profiles:
     active: ${spring.profiles.active}
@@ -11,3 +11,5 @@ spring:
     config:
       enabled: true
       uri: http://localhost:8888
+
+build.date: @maven.build.timestamp@
