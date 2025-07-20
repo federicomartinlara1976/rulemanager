@@ -8,7 +8,6 @@ import java.util.Optional;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,24 +30,27 @@ import net.bounceme.chronos.rulemanager.support.RuleManagerHelper;
 @Slf4j
 public class UpdateRules {
 
-	@Autowired
 	private RuleRepository ruleRepository;
 
-	@Autowired
 	private RoleRepository roleRepository;
 	
-	@Autowired
 	private AccessRepository accessRepository;
 
-	@Autowired
 	private MethodRepository methodRepository;
 	
-	@Autowired
 	private ModelMapper modelMapper;
+
+	public UpdateRules(RuleRepository ruleRepository, RoleRepository roleRepository, AccessRepository accessRepository,
+			MethodRepository methodRepository, ModelMapper modelMapper) {
+		this.ruleRepository = ruleRepository;
+		this.roleRepository = roleRepository;
+		this.accessRepository = accessRepository;
+		this.methodRepository = methodRepository;
+		this.modelMapper = modelMapper;
+	}
 
 	@Transactional
 	@SneakyThrows(IncorrectRuleException.class)
-	//@CachePut(value = "rules", key = "#rule.id")
 	public RuleDTO insertRule(RuleDTO ruleDTO) {
 		checkRule(ruleDTO, Boolean.FALSE);
 
@@ -81,7 +83,6 @@ public class UpdateRules {
 
 	@Transactional
 	@SneakyThrows(IncorrectRuleException.class)
-	//@CachePut(value = "rules", key = "#rule.id")
 	public RuleDTO updateRule(Long idRule, RuleDTO newDataDTO) {
 		checkRule(newDataDTO, Boolean.TRUE);
 
