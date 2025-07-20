@@ -1,19 +1,13 @@
 package net.bounceme.chronos.rulemanager.service.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 import net.bounceme.chronos.app.usuarios.commons.dto.MethodDTO;
-import net.bounceme.chronos.app.usuarios.commons.model.Method;
 import net.bounceme.chronos.rulemanager.repository.MethodRepository;
 import net.bounceme.chronos.rulemanager.service.MethodService;
 
@@ -21,20 +15,21 @@ import net.bounceme.chronos.rulemanager.service.MethodService;
 @Slf4j
 public class MethodServiceImpl implements MethodService {
 
-	@Autowired
 	private MethodRepository methodRepository;
 	
-	@Autowired
 	private ModelMapper modelMapper;
 	
+	public MethodServiceImpl(MethodRepository methodRepository, ModelMapper modelMapper) {
+		this.methodRepository = methodRepository;
+		this.modelMapper = modelMapper;
+	}
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<MethodDTO> listAll() {
 		log.info("get methods");
 		
-		List<Method> lstMethods = methodRepository.findAll();
-		return CollectionUtils.isNotEmpty(lstMethods) ? new ArrayList<>(lstMethods.stream()
-				.map(method -> modelMapper.map(method, MethodDTO.class)).toList())
-				: Collections.emptyList();
+		return methodRepository.findAll().stream()
+				.map(method -> modelMapper.map(method, MethodDTO.class)).toList();
 	}
 }
