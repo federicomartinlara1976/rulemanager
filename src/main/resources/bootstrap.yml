@@ -4,7 +4,7 @@ spring:
     version: @project.version@
     
   profiles:
-    active: ${spring.profiles.active}
+    active: @spring.profiles.active@
   
   config.import: "optional:configserver:"
   cloud:
