@@ -7,8 +7,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.3</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>3.3.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>net.bounceme.chronos</groupId>
@@ -19,7 +19,9 @@
 
 	<properties>
 		<java.version>21</java.version>
-		<spring-cloud.version>2020.0.3</spring-cloud.version>
+		<spring-cloud.version>2023.0.5</spring-cloud.version>
+		
+		<chronoslibs.version>1.0.0</chronoslibs.version>
 
 		<jacoco.version>0.7.9</jacoco.version>
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
@@ -64,6 +66,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
 		</dependency>
 
 		<dependency>
@@ -99,7 +102,7 @@
 		<dependency>
 			<groupId>net.bounceme.chronos.libs</groupId>
 			<artifactId>chronos-utils</artifactId>
-			<version>1.0.0</version>
+			<version>${chronoslibs.version}</version>
 		</dependency>
 
 		<dependency>
