@@ -28,7 +28,6 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	@Cacheable(value = "roles")
 	public List<RoleDTO> listAll() {
 		log.info("get roles");
 		

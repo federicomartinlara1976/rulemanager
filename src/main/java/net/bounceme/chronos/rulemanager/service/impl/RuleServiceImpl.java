@@ -30,7 +30,6 @@ public class RuleServiceImpl implements RuleService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	//@Cacheable("rules")
 	public List<RuleDTO> listAll() {
 		log.info("get rules");
 		
@@ -42,7 +41,6 @@ public class RuleServiceImpl implements RuleService {
 
 	@Override
 	@Transactional(readOnly = true)
-	//@Cacheable("rules")
 	public List<RuleDTO> listByMethod(String method) {
 		log.info("get rules by method {}", method);
 		

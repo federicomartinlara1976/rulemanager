@@ -28,7 +28,6 @@ public class AccessServiceImpl implements AccessService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	@Cacheable(value = "accesses")
 	public List<AccessDTO> listAll() {
 		log.info("get accesses");
 		
