@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 import net.bounceme.chronos.app.usuarios.commons.dto.MethodDTO;
-import net.bounceme.chronos.rulemanager.repository.MethodRepository;
+import net.bounceme.chronos.app.usuarios.commons.repository.MethodRepository;
 import net.bounceme.chronos.rulemanager.service.MethodService;
 
 @Service

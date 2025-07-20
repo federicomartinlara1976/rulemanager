@@ -19,11 +19,11 @@ import net.bounceme.chronos.app.usuarios.commons.model.Access;
 import net.bounceme.chronos.app.usuarios.commons.model.Method;
 import net.bounceme.chronos.app.usuarios.commons.model.Role;
 import net.bounceme.chronos.app.usuarios.commons.model.Rule;
+import net.bounceme.chronos.app.usuarios.commons.repository.AccessRepository;
+import net.bounceme.chronos.app.usuarios.commons.repository.MethodRepository;
+import net.bounceme.chronos.app.usuarios.commons.repository.RoleRepository;
+import net.bounceme.chronos.app.usuarios.commons.repository.RuleRepository;
 import net.bounceme.chronos.rulemanager.exception.IncorrectRuleException;
-import net.bounceme.chronos.rulemanager.repository.AccessRepository;
-import net.bounceme.chronos.rulemanager.repository.MethodRepository;
-import net.bounceme.chronos.rulemanager.repository.RoleRepository;
-import net.bounceme.chronos.rulemanager.repository.RuleRepository;
 import net.bounceme.chronos.rulemanager.support.RuleManagerHelper;
 
 @Component

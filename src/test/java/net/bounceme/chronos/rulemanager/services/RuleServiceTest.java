@@ -22,7 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import net.bounceme.chronos.app.usuarios.commons.dto.RuleDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Role;
 import net.bounceme.chronos.app.usuarios.commons.model.Rule;
-import net.bounceme.chronos.rulemanager.repository.RuleRepository;
+import net.bounceme.chronos.app.usuarios.commons.repository.RuleRepository;
 import net.bounceme.chronos.rulemanager.service.impl.RuleServiceImpl;
 
 @SpringBootTest

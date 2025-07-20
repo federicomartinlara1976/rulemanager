@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import net.bounceme.chronos.app.usuarios.commons.dto.AccessDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Access;
-import net.bounceme.chronos.rulemanager.repository.AccessRepository;
+import net.bounceme.chronos.app.usuarios.commons.repository.AccessRepository;
 import net.bounceme.chronos.rulemanager.service.impl.AccessServiceImpl;
 
 @SpringBootTest

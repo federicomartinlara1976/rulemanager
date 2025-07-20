@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import net.bounceme.chronos.app.usuarios.commons.dto.MethodDTO;
 import net.bounceme.chronos.app.usuarios.commons.model.Method;
-import net.bounceme.chronos.rulemanager.repository.MethodRepository;
+import net.bounceme.chronos.app.usuarios.commons.repository.MethodRepository;
 import net.bounceme.chronos.rulemanager.service.impl.MethodServiceImpl;
 
 @SpringBootTest
